@@ -1,0 +1,43 @@
+{
+  "records": [
+    {
+      "person_age": 29,
+      "person_income": 58000,
+      "person_home_ownership": "RENT",
+      "person_emp_length": 4.0,
+      "loan_intent": "PERSONAL",
+      "loan_grade": "B",
+      "loan_amnt": 8000,
+      "loan_int_rate": 11.49,
+      "loan_percent_income": 0.14,
+      "cb_person_default_on_file": "N",
+      "cb_person_cred_hist_length": 6
+    },
+    {
+      "person_age": 55,
+      "person_income": 34000,
+      "person_home_ownership": "MORTGAGE",
+      "person_emp_length": 2.0,
+      "loan_intent": "DEBTCONSOLIDATION",
+      "loan_grade": "E",
+      "loan_amnt": 18000,
+      "loan_int_rate": 19.75,
+      "loan_percent_income": 0.53,
+      "cb_person_default_on_file": "Y",
+      "cb_person_cred_hist_length": 11
+    },
+    {
+      "person_age": 22,
+      "person_income": 28000,
+      "person_home_ownership": "OWN",
+      "person_emp_length": null,
+      "loan_intent": "EDUCATION",
+      "loan_grade": "A",
+      "loan_amnt": 3500,
+      "loan_int_rate": null,
+      "loan_percent_income": 0.13,
+      "cb_person_default_on_file": "N",
+      "cb_person_cred_hist_length": 3
+    }
+  ]
+}

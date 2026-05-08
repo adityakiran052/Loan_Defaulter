@@ -1,23 +1,37 @@
-# Python environment
+# ─── Python ───────────────────────────────────
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyc
 
-# Virtual Environment (just in case)
+# ─── Virtual Environment ─────────────────────
 LDPenv/
+.venv/
+venv/
 
-# MLflow logs (The folder we were looking for!)
-mlruns/
-mlruns.db
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# MLflow database and logs
+# ─── MLflow (tracked via mlflow.db, not needed in git) ──
 mlruns/
 mlflow.db
-venv/
-__pycache__/
-.DS_Store
-*.pyc
+
+# ─── DVC cache (DVC manages this internally) ─
+/data/raw/*.csv
+/data/processed/
+
+# ─── Generated plots & artifacts (reproducible via scripts) ──
+*.png
+feature_names.csv
+
+# ─── Jupyter Notebook checkpoints ────────────
 .ipynb_checkpoints/
+notebooks/mlruns/
+
+# ─── OS files ────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE / Editor ────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
