@@ -16,3 +16,8 @@ Thumbs.db
 # MLflow database and logs
 mlruns/
 mlflow.db
+venv/
+__pycache__/
+.DS_Store
+*.pyc
+.ipynb_checkpoints/
