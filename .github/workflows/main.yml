@@ -24,8 +24,8 @@ jobs:
 
     - name: Test API Startup (Local)
       run: |
-        # This checks if the code has syntax errors by trying to start the app
-        python -m uvicorn src.api:app --exit-code-from-startup 
+        # This checks if the code has syntax errors by importing the app
+        python -c "from src.api import app" 
 
     - name: Build Docker Image
       run: |
