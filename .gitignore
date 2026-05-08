@@ -1,0 +1,14 @@
+# Python environment
+__pycache__/
+*.py[cod]
+
+# Virtual Environment (just in case)
+LDPenv/
+
+# MLflow logs (The folder we were looking for!)
+mlruns/
+mlruns.db
+
+# OS files
+.DS_Store
+Thumbs.db
