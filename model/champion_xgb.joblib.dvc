@@ -1,0 +1,5 @@
+outs:
+- md5: 0beddfeece671c44682a52166ecb753f
+  size: 423147
+  hash: md5
+  path: champion_xgb.joblib
