@@ -12,3 +12,7 @@ mlruns.db
 # OS files
 .DS_Store
 Thumbs.db
+
+# MLflow database and logs
+mlruns/
+mlflow.db
