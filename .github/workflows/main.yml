@@ -1,0 +1,32 @@
+name: Loan App CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Test API Startup (Local)
+      run: |
+        # This checks if the code has syntax errors by trying to start the app
+        python -m uvicorn src.api:app --exit-code-from-startup 
+
+    - name: Build Docker Image
+      run: |
+        docker build -t loan-app-test .
