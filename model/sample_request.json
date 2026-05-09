@@ -1,0 +1,13 @@
+{
+  "person_age": 29,
+  "person_income": 58000,
+  "person_home_ownership": "RENT",
+  "person_emp_length": 4.0,
+  "loan_intent": "PERSONAL",
+  "loan_grade": "B",
+  "loan_amnt": 8000,
+  "loan_int_rate": 11.49,
+  "loan_percent_income": 0.14,
+  "cb_person_default_on_file": "N",
+  "cb_person_cred_hist_length": 6
+}

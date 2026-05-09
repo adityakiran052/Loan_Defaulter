@@ -1,0 +1,138 @@
+{
+  "_meta": {
+    "description": "Credit Risk Prediction API \u2014 Input Schema",
+    "version": "1.0.0",
+    "generated_at": "2026-05-08T21:20:38.369377Z",
+    "model": "XGBClassifier (Optuna-tuned)",
+    "target": "loan_status",
+    "target_classes": {
+      "0": "No Default",
+      "1": "Default"
+    },
+    "output_fields": {
+      "prediction": "int  \u2014 0 (No Default) or 1 (Default)",
+      "probability": "float \u2014 P(Default), range [0.0, 1.0]",
+      "risk_tier": "str  \u2014 LOW / MEDIUM / HIGH (threshold-based)"
+    }
+  },
+  "fields": {
+    "person_age": {
+      "type": "integer",
+      "description": "Age of the applicant in years",
+      "min": 18,
+      "max": 100,
+      "example": 29,
+      "required": true
+    },
+    "person_income": {
+      "type": "integer",
+      "description": "Annual income of the applicant in USD",
+      "min": 4000,
+      "max": 6000000,
+      "example": 58000,
+      "required": true
+    },
+    "person_home_ownership": {
+      "type": "string",
+      "description": "Applicant's home ownership status",
+      "allowed": [
+        "MORTGAGE",
+        "OTHER",
+        "OWN",
+        "RENT"
+      ],
+      "example": "RENT",
+      "required": true
+    },
+    "person_emp_length": {
+      "type": "float",
+      "description": "Employment length in years (0 = less than 1 year)",
+      "min": 0.0,
+      "max": 60.0,
+      "example": 4.0,
+      "required": true,
+      "nullable": true,
+      "note": "Pass null if unknown; will be imputed with training median"
+    },
+    "loan_intent": {
+      "type": "string",
+      "description": "Purpose / intent of the loan",
+      "allowed": [
+        "DEBTCONSOLIDATION",
+        "EDUCATION",
+        "HOMEIMPROVEMENT",
+        "MEDICAL",
+        "PERSONAL",
+        "VENTURE"
+      ],
+      "example": "PERSONAL",
+      "required": true
+    },
+    "loan_grade": {
+      "type": "string",
+      "description": "Loan grade assigned by the lender (A = best, G = worst)",
+      "allowed": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "example": "B",
+      "required": true
+    },
+    "loan_amnt": {
+      "type": "integer",
+      "description": "Loan amount requested in USD",
+      "min": 500,
+      "max": 35000,
+      "example": 8000,
+      "required": true
+    },
+    "loan_int_rate": {
+      "type": "float",
+      "description": "Annual interest rate of the loan (%)",
+      "min": 5.0,
+      "max": 24.0,
+      "example": 11.49,
+      "required": true,
+      "nullable": true,
+      "note": "Pass null if unknown; will be imputed from loan_grade median"
+    },
+    "loan_percent_income": {
+      "type": "float",
+      "description": "Loan amount as a fraction of annual income",
+      "min": 0.0,
+      "max": 0.83,
+      "example": 0.14,
+      "required": true,
+      "note": "Computed as loan_amnt / person_income \u2014 supply directly or let API compute"
+    },
+    "cb_person_default_on_file": {
+      "type": "string",
+      "description": "Whether the applicant has a historical default on credit bureau file",
+      "allowed": [
+        "N",
+        "Y"
+      ],
+      "example": "N",
+      "required": true
+    },
+    "cb_person_cred_hist_length": {
+      "type": "integer",
+      "description": "Length of credit history in years",
+      "min": 2,
+      "max": 30,
+      "example": 6,
+      "required": true
+    }
+  },
+  "engineered_features": {
+    "_note": "These are computed server-side from the raw fields above. Do NOT pass these in the request.",
+    "loan_to_income": "loan_amnt / (person_income + 1)",
+    "income_per_emp_yr": "person_income / (person_emp_length + 1)",
+    "risk_score": "loan_int_rate \u00d7 loan_percent_income"
+  }
+}
