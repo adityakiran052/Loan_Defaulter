@@ -39,29 +39,29 @@ VALID_CB_DEFAULT     = {"Y", "N"}
 
 class LoanApplication(BaseModel):
     # ── Numerical inputs ──────────────────────────────────────────────────────
-    person_age: int = Field(..., ge=18, le=100, example=28,
+    person_age: int = Field(..., ge=18, le=100, examples=[28],
                             description="Applicant age (18–100)")
-    person_income: float = Field(..., gt=0, example=54000,
+    person_income: float = Field(..., gt=0, examples=[54000],
                                  description="Annual income in USD")
-    person_emp_length: float = Field(..., ge=0, le=60, example=5.0,
+    person_emp_length: float = Field(..., ge=0, le=60, examples=[5.0],
                                      description="Employment length in years (0–60)")
-    loan_amnt: float = Field(..., gt=0, example=12000,
+    loan_amnt: float = Field(..., gt=0, examples=[12000],
                              description="Requested loan amount in USD")
-    loan_int_rate: float = Field(..., gt=0, le=30, example=11.49,
+    loan_int_rate: float = Field(..., gt=0, le=30, examples=[11.49],
                                  description="Loan interest rate (%)")
-    loan_percent_income: float = Field(..., ge=0, le=1, example=0.22,
+    loan_percent_income: float = Field(..., ge=0, le=1, examples=[0.22],
                                        description="Loan amount as fraction of annual income")
-    cb_person_cred_hist_length: int = Field(..., ge=0, example=3,
+    cb_person_cred_hist_length: int = Field(..., ge=0, examples=[3],
                                             description="Credit history length in years")
 
     # ── Categorical inputs (raw strings — encoded internally) ─────────────────
-    person_home_ownership: str = Field(..., example="RENT",
+    person_home_ownership: str = Field(..., examples=["RENT"],
                                        description="RENT | OWN | MORTGAGE | OTHER")
-    loan_intent: str = Field(..., example="PERSONAL",
+    loan_intent: str = Field(..., examples=["PERSONAL"],
                              description="PERSONAL | EDUCATION | MEDICAL | VENTURE | HOMEIMPROVEMENT | DEBTCONSOLIDATION")
-    loan_grade: str = Field(..., example="B",
+    loan_grade: str = Field(..., examples=["B"],
                             description="A | B | C | D | E | F | G")
-    cb_person_default_on_file: str = Field(..., example="N",
+    cb_person_default_on_file: str = Field(..., examples=["N"],
                                            description="Prior default on credit bureau file: Y | N")
 
     # ── Validators ────────────────────────────────────────────────────────────

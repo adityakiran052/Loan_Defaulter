@@ -3,17 +3,18 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 import os
 
-# 1. Create the directory if it doesn't exist
+# 1. Create the directory
 os.makedirs('models', exist_ok=True)
 
-# 2. Train a "stub" model
-# Your build_feature_vector creates 25 features (7 base + 2 engineered + 16 categorical)
-# We need to match that number exactly so the model doesn't crash.
+# 2. MATCH THE API: Your error says the API is sending 24 features
+num_features = 24 
+
+# 3. Train the dummy model with 24 features
 mock_model = LogisticRegression()
-X_fake = np.zeros((2, 25)) 
+X_fake = np.zeros((2, num_features)) 
 y_fake = np.array([0, 1])
 mock_model.fit(X_fake, y_fake)
 
-# 3. Save it exactly where your api.py expects it
+# 4. Save it
 joblib.dump(mock_model, "models/model.pkl")
-print("✅ Dummy model saved to models/model.pkl")
+print(f"✅ Dummy model RE-SYNCED to {num_features} features.")
