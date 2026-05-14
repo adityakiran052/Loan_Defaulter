@@ -27,12 +27,10 @@ notebooks/mlruns/
 
 # ─── OS files ────────────────────────────────
 .DS_Store
-<<<<<<< HEAD
 *.pyc
 .ipynb_checkpoints/
 
 test.py
-=======
 Thumbs.db
 desktop.ini
 
@@ -41,4 +39,3 @@ desktop.ini
 .idea/
 *.swp
 *.swo
->>>>>>> fed689a2ff06aa7ce41588b4436a688fa66c48f7
